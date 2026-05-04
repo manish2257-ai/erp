@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ERP System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f2f5;
+    }
+    .container {
+      text-align: center;
+      background: #fff;
+      padding: 2rem 3rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    h1 { color: #333; }
+    p { color: #666; }
+    button {
+      margin-top: 1rem;
+      padding: 0.6rem 1.4rem;
+      background: #4f46e5;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    button:hover { background: #4338ca; }
+    #result {
+      margin-top: 1rem;
+      color: #333;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>ERP System</h1>
+    <p>Full-stack ERP powered by Node.js, Express &amp; MongoDB</p>
+    <button onclick="testApi()">Test API</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    async function testApi() {
+      const resultEl = document.getElementById('result');
+      try {
+        const res = await fetch('http://localhost:5000/api/test');
+        const data = await res.json();
+        resultEl.textContent = data.message;
+      } catch (err) {
+        resultEl.textContent = 'Error: Could not reach the server.';
+      }
+    }
+  </script>
+</body>
+</html>
